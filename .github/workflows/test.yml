@@ -8,5 +8,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Set branch name
+        id: branch
+        run: echo "::set-output name=branch::${{ github.ref }}"
       - name: Show branch name
-        run: echo ${{ github.ref }}
+        run: echo ${{ steps.branch.outputs.branch }}
